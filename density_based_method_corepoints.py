@@ -1,9 +1,20 @@
 from sklearn.datasets import make_blobs
 import matplotlib.pyplot as plt
 import numpy as np
+import random
 from sklearn.cluster import KMeans
 
-N=500
+#Task to do: 
+#Es kann passieren, dass sich zwei Gruppen von Corepoints bilden, welche
+#eigentlich zusammengehören
+#Bsp. Corepoint x1=(1,0), x3=(1.5,0), x2=(2,0), epsilon=0.6
+#wird erst x1 der einen gruppe, x2 der anderen Gruppe zugeordnet
+#erst durch die spätere Entdeckung von x3 wird klar, dass x1 und x2 
+#zusammen gehören.
+#Lösungvorschlag, x3 zu mehren Gruppen zuweisen und am Ende die Gruppe
+#miteinander vergleichen
+
+N=250
 X, y = make_blobs(n_samples=N, centers=4,
                    random_state=42)#, cluster.std=0.7)
 print(X.shape)
@@ -48,7 +59,7 @@ for i in range(N):
                 if s==neighbor and counter>3 and continue_search:
                     a.append(i)
                     notinList=False
-                    continue_search=False
+                    #continue_search=False #Ausklammerung macht das Programm sehr langsam
     if notinList:
         if counter>3:
             a=[i]
@@ -83,12 +94,15 @@ colarr=["aliceblue","azure","black","white","blueviolet","brown","gray","yellow"
 collcounter=0
 #Markiere Corepoints
 for a in corepoints:
-    for s in a:
-        plt.scatter(X[s,0],X[s,1],marker="P",color=colarr[collcounter%10])
+    col= ["#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)])]#Farben zufällig wählen
+    for s in a:        
+        #plt.scatter(X[s,0],X[s,1],marker="P",color=colarr[collcounter%10])
+        plt.scatter(X[s,0],X[s,1],marker="P",color=col)
         #Markiere Nachbar von Corepoint, welche kein Corepoint ist
         for couple in neighbor_and_corepoints:
             if couple[1]==s:
-                plt.scatter(X[couple[0],0],X[couple[0],1],marker="x",color=colarr[collcounter%10])
+                #plt.scatter(X[couple[0],0],X[couple[0],1],marker="x",color=colarr[collcounter%10])
+                plt.scatter(X[couple[0],0],X[couple[0],1],marker="x",color=col)
     collcounter=collcounter+1
 #Markieren Isolatedpoints
 for s in isolatedpoints:
