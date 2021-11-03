@@ -94,6 +94,7 @@ colarr=["aliceblue","azure","black","white","blueviolet","brown","gray","yellow"
 collcounter=0
 #Markiere Corepoints
 for a in corepoints:
+    random.seed(collcounter)
     col= ["#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)])]#Farben zufällig wählen
     for s in a:        
         #plt.scatter(X[s,0],X[s,1],marker="P",color=colarr[collcounter%10])
@@ -103,7 +104,7 @@ for a in corepoints:
             if couple[1]==s:
                 #plt.scatter(X[couple[0],0],X[couple[0],1],marker="x",color=colarr[collcounter%10])
                 plt.scatter(X[couple[0],0],X[couple[0],1],marker="x",color=col)
-    #collcounter=collcounter+1
+    collcounter=collcounter+1
 #Markieren Isolatedpoints
 for s in isolatedpoints:
     plt.scatter(X[s,0],X[s,1],marker="x",color="red")
