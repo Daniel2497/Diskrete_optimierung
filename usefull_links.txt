@@ -1,0 +1,2 @@
+https://networkx.org/documentation/stable/tutorial.html
+https://www.geeksforgeeks.org/directed-graphs-multigraphs-and-visualization-in-networkx/?ref=lbp
