@@ -40,13 +40,13 @@ log_time_values_normalised=[]
 #for i in range(10):
 log_time_values_normalised=np.log2(time_values_normalised)
     #plt.show()
-print("Log2 auf normalisierte Berechnungzeiten")
-print(log_time_values_normalised)
+#print("Log2 auf normalisierte Berechnungzeiten")
+#print(log_time_values_normalised)
 
 #Plot Results
-#plt.plot(log_time_values_normalised)
-#plt.plot(range(8))#10
+plt.plot(log_time_values_normalised)
+plt.plot(range(10))#10
 #zz=range(10)*2
-#plt.plot(range(0,16,2))#0,20,2
+plt.plot(range(0,20,2))#0,20,2
 #plt.plot(range(10))
-#plt.show()
+plt.show()
