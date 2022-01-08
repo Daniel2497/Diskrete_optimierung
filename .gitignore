@@ -3,3 +3,6 @@ Diskrete_optimierung
 identify_core_only.py
 test.py
 *ipynb_checkpoints
+use_osmnx_and_tools/use_map_of_jena.ipynb
+subgraph/use_map_of_jena.ipynb
+OSMNX_Versuche/draw_map_of_jena.ipynb
